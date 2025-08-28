@@ -21,6 +21,8 @@ import "aos/dist/aos.css";
 import crudThumb from "./assets/crud-thumbnail.jpg";
 import todoThumb from "./assets/todo-thumbnail.jpg";
 
+import { FaEnvelope, FaLinkedin, FaGithub, FaWhatsapp } from "react-icons/fa";
+
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -150,12 +152,52 @@ function App() {
 
       {/* Contact Section */}
       <section id="contact" className="contact" data-aos="fade-left">
-        <h2>Kontak</h2>
-        <p>Email: <a href="mailto:ludfidwi787@gmail.com?subject=Halo%20Angga&body=Isi%20email%20di%20sini" target="_blank" rel="noopener noreferrer">ludfidwi787@gmail.com</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/ludfi-dwi-septanto-rinaidi-angga-saputra" target="_blank" rel="noopener noreferrer">linkedin.com/in/ludfi-dwi-septanto-rinaidi-angga-saputra</a></p>
-        <p>GitHub: <a href="https://github.com/AnggaSaputra78" target="_blank" rel="noopener noreferrer">github.com/AnggaSaputra78</a></p>
-        <p>WA: <a href="https://wa.me/6281450324748" target="_blank" rel="noopener noreferrer">081450324748</a></p>
-      </section>
+  <h2>Kontak</h2>
+
+  <p>
+    <FaEnvelope style={{ marginRight: "8px" }} />
+    <a
+      href="mailto:ludfidwi787@gmail.com?subject=Halo%20Angga&body=Isi%20email%20di%20sini"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      ludfidwi787@gmail.com
+    </a>
+  </p>
+
+  <p>
+    <FaLinkedin style={{ marginRight: "8px" }} />
+    <a
+      href="https://www.linkedin.com/in/ludfi-dwi-septanto-rinaidi-angga-saputra"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      linkedin.com/in/ludfi-dwi-septanto-rinaidi-angga-saputra
+    </a>
+  </p>
+
+  <p>
+    <FaGithub style={{ marginRight: "8px" }} />
+    <a
+      href="https://github.com/AnggaSaputra78"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      github.com/AnggaSaputra78
+    </a>
+  </p>
+
+  <p>
+    <FaWhatsapp style={{ marginRight: "8px" }} />
+    <a
+      href="https://wa.me/6281450324748"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      081450324748
+    </a>
+  </p>
+</section>
     </div>
   );
 }

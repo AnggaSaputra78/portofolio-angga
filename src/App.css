@@ -252,8 +252,9 @@ html, body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
-  margin: 0 auto;
+  align-items: stretch; /* penting: bikin semua card sama tinggi */
 }
+
 
 .card {
   background: rgba(255, 255, 255, 0.15);
