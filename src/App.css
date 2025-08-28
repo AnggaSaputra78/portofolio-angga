@@ -1,88 +1,169 @@
-/* ===================== Root Container ===================== */
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-  background: linear-gradient(135deg, #6a11cb, #2575fc);
-  color: #fff;
+/* ===================== Global Styles ===================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
   min-height: 100vh;
-  border-radius: 12px;
-  box-shadow: 0 4px 30px rgba(0,0,0,0.2);
-  transition: all 0.3s ease-in-out;
-  perspective: 1000px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #1a0000, #8b0000, #000000);
+  background-size: 300% 300%;
+  animation: gradientMove 12s ease infinite;
+  color: #fff;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* ===================== Animasi Gradient ===================== */
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 /* ===================== Navbar ===================== */
-nav {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  padding: 15px 30px;
-  margin: 20px;
+.navbar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(90, 0, 0, 0.9);
   display: flex;
-  justify-content: center;
-  gap: 20px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-  transition: all 0.3s ease-in-out;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 5%;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
-nav a {
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffcccb;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+}
+
+.nav-links a {
+  display: flex;                /* bikin flex biar teks bisa rata tengah */
+  align-items: center;          /* vertikal tengah */
+  justify-content: center;      /* horizontal tengah */
+  min-width: 100px;             /* kasih lebar minimal biar persegi panjang */
+  height: 40px;                 /* tinggi seragam */
+  text-decoration: none;
   color: white;
   font-weight: bold;
-  text-decoration: none;
-  padding: 10px 15px;
-  border-radius: 12px;
-  transition: all 0.3s ease-in-out;
+  background: rgba(255, 255, 255, 0.05); /* kasih background tipis biar keliatan kotak */
+  border-radius: 6px;           /* sedikit rounded, bisa 0 kalau mau kotak full */
+  transition: 0.3s;
 }
 
-nav a:hover {
-  background: rgba(255, 255, 255, 0.25);
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+.nav-links a:hover {
+  color: #ff5c8a;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+
+/* ===================== Hamburger Menu ===================== */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 5px;
+  z-index: 1001;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: white;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Animasi hamburger saat aktif */
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
 }
 
 /* ===================== Hero Section ===================== */
 .hero {
+  width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 3rem 2rem;
-  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  padding: 100px 5% 60px;
+  background: linear-gradient(135deg, #1a0000, #8b0000, #000000);
+  background-size: 300% 300%;
+  animation: gradientMove 12s ease infinite;
   color: #fff;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-  transform-style: preserve-3d;
-  perspective: 1000px;
-  animation: heroFadeIn 1.2s ease-out forwards;
-  opacity: 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.profile-pic {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #fff;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.5s ease;
+}
+
+.profile-pic:hover {
+  transform: scale(1.05);
 }
 
 .hero h1 {
-  font-size: 3rem;
+  font-size: 2.8rem;
   margin-bottom: 1rem;
-  letter-spacing: 2px;
-  word-spacing: 5px;
-  text-transform: uppercase;
-  text-shadow: 2px 2px 10px rgba(0,0,0,0.4);
-  transform: translateZ(30px);
-  animation: slideDown 1s ease-out forwards;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
+  max-width: 900px;
+  line-height: 1.2;
 }
 
 .hero p {
   font-size: 1.3rem;
   margin-bottom: 2rem;
   opacity: 0.9;
-  transform: translateZ(20px);
-  animation: slideUp 1s ease-out 0.3s forwards;
+  max-width: 600px;
 }
 
-.hero .btn {
+.btn {
   display: inline-block;
-  padding: 12px 24px;
+  padding: 12px 28px;
   font-size: 1.1rem;
   font-weight: bold;
   color: #fff;
@@ -91,42 +172,72 @@ nav a:hover {
   border-radius: 30px;
   text-decoration: none;
   transition: all 0.4s ease;
-  transform: translateZ(50px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
-.hero .btn:hover {
+.btn:hover {
   background: #ff4b2b;
-  transform: translateZ(70px) scale(1.1) rotateX(10deg);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
 }
 
-/* ===================== Profile Picture ===================== */
-.profile-pic {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid #fff;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-  transition: transform 0.5s ease, box-shadow 0.5s ease;
+/* ===================== About Section ===================== */
+.about {
+  width: 100%;
+  padding: 80px 5%;
+  background: linear-gradient(135deg, #8b0000, #330000);
+  color: white;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
 
-.profile-pic:hover {
-  transform: rotateY(15deg) rotateX(10deg) scale(1.1);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+.about-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.about h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  color: #ffcccb;
+  position: relative;
+  display: inline-block;
+}
+
+.about h2::after {
+  content: "";
+  width: 60%;
+  height: 3px;
+  background: #ffcccb;
+  display: block;
+  margin: 10px auto 0;
+  border-radius: 5px;
+}
+
+.about p {
+  font-size: 18px;
+  line-height: 1.8;
+  max-width: 750px;
+  margin: 0 auto;
+  color: #f2f2f2;
 }
 
 /* ===================== Portfolio Section ===================== */
 .portfolio {
-  padding: 5rem 2rem;
+  width: 100%;
+  padding: 5rem 5%;
   text-align: center;
-  background: linear-gradient(135deg, #141e30, #243b55);
+  background: linear-gradient(135deg, #000000, #330000, #8b0000);
+  background-size: 300% 300%;
+  animation: gradientMove 15s ease infinite;
   color: #fff;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-  perspective: 1200px;
-  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.portfolio-content {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .portfolio h2 {
@@ -134,17 +245,14 @@ nav a:hover {
   margin-bottom: 3rem;
   letter-spacing: 2px;
   text-transform: uppercase;
-  text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
-  animation: fadeDown 1s ease forwards;
-  opacity: 0;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .projects {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
-  animation: fadeIn 1.2s ease forwards;
-  opacity: 0;
+  margin: 0 auto;
 }
 
 .card {
@@ -152,14 +260,16 @@ nav a:hover {
   border-radius: 12px;
   padding: 2rem;
   backdrop-filter: blur(8px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.35);
-  transform-style: preserve-3d;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
   cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  display: block;
 }
 
 .card:hover {
-  transform: rotateY(10deg) rotateX(5deg) translateY(-10px) scale(1.05);
+  transform: translateY(-10px) scale(1.03);
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
 }
 
@@ -177,87 +287,122 @@ nav a:hover {
 
 /* ===================== Contact Section ===================== */
 .contact {
-  background-color: #f5f5f5;
-  padding: 40px 20px;
-  border-radius: 12px;
-  max-width: 800px;
-  margin: 40px auto;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 60px 5%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
+  backdrop-filter: blur(8px);
+}
+
+.contact-content {
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .contact h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-  color: #333;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: #ffcccb;
 }
 
 .contact p {
-  margin: 10px 0;
+  margin: 15px 0;
   font-size: 1.1rem;
-  color: #555;
-  word-wrap: break-word;
+  color: #f2f2f2;
 }
 
 .contact a {
-  color: #0077b5;
+  color: #ffdd59;
   text-decoration: none;
   transition: color 0.3s ease;
+  margin-left: 5px;
 }
 
 .contact a:hover {
-  color: #005582;
+  color: #ffcccb;
   text-decoration: underline;
 }
-
-/* ===================== Animations ===================== */
-@keyframes heroFadeIn {
-  from { opacity: 0; transform: translateY(50px) scale(0.95); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
+.certificate {
+  padding: 60px 20px;
+  text-align: center;
 }
 
-@keyframes slideDown {
-  from { opacity: 0; transform: translateY(-50px) translateZ(30px); }
-  to { opacity: 1; transform: translateY(0) translateZ(30px); }
+.certificates {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
 }
 
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(50px) translateZ(20px); }
-  to { opacity: 1; transform: translateY(0) translateZ(20px); }
+.certificate-img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 10px;
+  margin-bottom: 10px;
 }
 
-@keyframes fadeDown {
-  from { opacity: 0; transform: translateY(-40px); }
-  to { opacity: 1; transform: translateY(0); }
+
+/* ===================== Footer ===================== */
+.footer {
+  width: 100%;
+  padding: 20px 5%;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(40px) scale(0.95); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
+/* ===================== Media Queries (Responsif) ===================== */
+@media (max-width: 1024px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .projects {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
 }
 
-/* ===================== Media Queries (HP / layar kecil) ===================== */
 @media (max-width: 768px) {
-  #root {
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 15px rgba(0,0,0,0.2);
-  }
-
-  nav {
+  /* Navbar Mobile */
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    background: rgba(90, 0, 0, 0.98);
     flex-direction: column;
-    gap: 10px;
-    padding: 10px 15px;
-    margin: 10px;
+    width: 70%;
+    height: 100vh;
+    padding: 80px 20px;
+    transition: right 0.4s ease-in-out;
+    z-index: 999;
+    gap: 25px;
   }
 
-  nav a {
-    padding: 8px 12px;
-    font-size: 0.9rem;
+  .nav-links.active {
+    right: 0;
   }
 
+  .nav-links a {
+    font-size: 1.2rem;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    transition: background 0.3s ease;
+  }
+
+  .nav-links a:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  /* Hero Mobile */
   .hero {
-    padding: 2rem 1rem;
+    padding: 80px 5% 40px;
   }
 
   .hero h1 {
@@ -265,21 +410,31 @@ nav a:hover {
   }
 
   .hero p {
-    font-size: 1rem;
-  }
-
-  .hero .btn {
-    padding: 10px 20px;
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 
   .profile-pic {
-    width: 120px;
-    height: 120px;
+    width: 150px;
+    height: 150px;
   }
 
+  /* About Mobile */
+  .about {
+    padding: 60px 5%;
+  }
+
+  .about h2 {
+    font-size: 26px;
+  }
+
+  .about p {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* Portfolio Mobile */
   .portfolio {
-    padding: 3rem 1rem;
+    padding: 3rem 5%;
   }
 
   .portfolio h2 {
@@ -291,25 +446,44 @@ nav a:hover {
     gap: 1.5rem;
   }
 
-  .card h3 {
-    font-size: 1.3rem;
-  }
-
-  .card p {
-    font-size: 0.95rem;
-  }
-
+  /* Contact Mobile */
   .contact {
-    padding: 30px 15px;
-    margin: 20px auto;
+    padding: 40px 5%;
   }
 
   .contact h2 {
-    font-size: 1.7rem;
+    font-size: 1.8rem;
   }
 
   .contact p,
   .contact a {
     font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 12px 5%;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .hero h1 {
+    font-size: 1.7rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+  
+  .card {
+    padding: 1.5rem;
   }
 }
