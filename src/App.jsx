@@ -11,7 +11,7 @@ import sertifikatIBMThumb2 from "./assets/sertifikatibm2-thumbnail.jpg";
 import sertifikatIBMpdf2 from "./assets/sertifikat-ibm2.pdf";
 
 // Sertifikat Dicoding
-import KeterampilanKrusialDeveloperdiEraAIpdf from "./assets/keterampilan Krusial Developer di Era AI.pdf";
+import KeterampilanKrusialDeveloperdiEraAIpdf from "./assets/keterampilan-krusial-developer-di-Era-ai.pdf";
 import sertifikatketerampilanThumb from "./assets/sertifikatketerampilan-thumbnail.jpg";
 
 function App() {
