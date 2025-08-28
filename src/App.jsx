@@ -17,6 +17,9 @@ import sertifikatketerampilanThumb from "./assets/sertifikatketerampilan-thumbna
 // AOS
 import AOS from "aos";
 import "aos/dist/aos.css";
+//portofolio
+import crudThumb from "./assets/crud-thumbnail.jpg";
+import todoThumb from "./assets/todo-thumbnail.jpg";
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -90,20 +93,38 @@ function App() {
         </p>
       </section>
 
-      {/* Portfolio Section */}
-      <section id="portfolio" className="portfolio" data-aos="zoom-in-up">
-        <h2>Portofolio</h2>
-        <div className="projects">
-          <a href="https://crudkaryawan.page.gd/" target="_blank" rel="noopener noreferrer" className="card" data-aos="flip-left">
-            <h3>CRUD Data Karyawan</h3>
-            <p>Aplikasi sederhana untuk tambah, edit, hapus data karyawan.</p>
-          </a>
-          <a href="https://catatanku.page.gd" target="_blank" rel="noopener noreferrer" className="card" data-aos="flip-right">
-            <h3>Todo List App</h3>
-            <p>Aplikasi untuk mencatat dan menyelesaikan tugas harian.</p>
-          </a>
-        </div>
-      </section>
+     {/* Portfolio Section */}
+<section id="portfolio" className="portfolio" data-aos="zoom-in-up">
+  <h2>Portofolio</h2>
+  <div className="projects">
+
+    {/* CRUD Project */}
+    <a
+      href="https://crudkaryawan.page.gd/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="card"
+      data-aos="flip-left"
+    >
+      <img src={crudThumb} alt="CRUD Data Karyawan" className="project-img" />
+      <h3>CRUD Data Karyawan</h3>
+      <p>Aplikasi sederhana untuk tambah, edit, hapus data karyawan.</p>
+    </a>
+
+    {/* Todo List Project */}
+    <a
+      href="https://catatanku.page.gd"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="card"
+      data-aos="flip-right"
+    >
+      <img src={todoThumb} alt="Todo List App" className="project-img" />
+      <h3>Todo List App</h3>
+      <p>Aplikasi untuk mencatat dan menyelesaikan tugas harian.</p>
+    </a>
+  </div>
+</section>
 
       {/* Certificate Section */}
       <section id="certificate" className="certificate" data-aos="fade-up">

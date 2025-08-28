@@ -487,3 +487,52 @@ html, body {
     padding: 1.5rem;
   }
 }
+/* ===================== API EFFECT ===================== */
+.fire {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background: orange;
+  border-radius: 50%;
+  bottom: 0;
+  animation: fireRise 2s linear infinite;
+  pointer-events: none;
+  z-index: 0; /* biar di belakang */
+}
+
+@keyframes fireRise {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    background: orange;
+  }
+  50% {
+    transform: translateY(-100px) scale(1.5);
+    opacity: 0.6;
+    background: red;
+  }
+  100% {
+    transform: translateY(-200px) scale(0.5);
+    opacity: 0;
+    background: yellow;
+  }
+}
+.project-img {
+  width: 100%;
+  aspect-ratio: 16/9; /* Tinggi otomatis mengikuti lebar */
+  object-fit: cover;
+  object-position: center;
+
+  border-radius: 10px;
+  margin-bottom: 15px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
