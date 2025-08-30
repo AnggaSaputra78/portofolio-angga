@@ -20,8 +20,13 @@ import "aos/dist/aos.css";
 //portofolio
 import crudThumb from "./assets/crud-thumbnail.jpg";
 import todoThumb from "./assets/todo-thumbnail.jpg";
-
+//medsos
 import { FaEnvelope, FaLinkedin, FaGithub, FaWhatsapp } from "react-icons/fa";
+//CV
+import cvPDF from "./assets/CV-Ludfi.pdf";
+
+// Recharts
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -54,6 +59,18 @@ function App() {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
 
+  // Data skill
+  const skillData = [
+    { name: "HTML", level: 90 },
+    { name: "CSS", level: 85 },
+    { name: "JavaScript", level: 80 },
+    { name: "React.js", level: 75 },
+    { name: "Node.js", level: 70 },
+    { name: "PHP", level: 85 },
+    { name: "MySQL", level: 80 },
+    { name: "Git & GitHub", level: 75 },
+  ];
+
   return (
     <div className="App">
       {/* 🔥 Fire Particles */}
@@ -65,8 +82,10 @@ function App() {
           <li><a href="#hero" onClick={closeMenu}>Home</a></li>
           <li><a href="#about" onClick={closeMenu}>Tentang</a></li>
           <li><a href="#portfolio" onClick={closeMenu}>Portofolio</a></li>
-          <li><a href="#contact" onClick={closeMenu}>Kontak</a></li>
+          <li><a href="#skill-chart" onClick={closeMenu}>Skill</a></li>
           <li><a href="#certificate" onClick={closeMenu}>Sertifikat</a></li>
+          <li><a href="#cv" onClick={closeMenu}>CV</a></li>
+          <li><a href="#contact" onClick={closeMenu}>Kontak</a></li>
         </ul>
         <div className={`hamburger ${isMenuOpen ? "active" : ""}`} onClick={toggleMenu}>
           <span></span><span></span><span></span>
@@ -76,9 +95,9 @@ function App() {
       {/* Hero Section */}
       <section id="hero" className="hero" data-aos="fade-up">
         <div className="fire" style={{ left: "20%" }}></div>
-  <div className="fire" style={{ left: "40%" }}></div>
-  <div className="fire" style={{ left: "60%" }}></div>
-  <div className="fire" style={{ left: "80%" }}></div>
+        <div className="fire" style={{ left: "40%" }}></div>
+        <div className="fire" style={{ left: "60%" }}></div>
+        <div className="fire" style={{ left: "80%" }}></div>
         <img src={profilePic} alt="Foto Profil" className="profile-pic" />
         <h1>HALO, SAYA LUDFI DWI SEPTANTO RINAIDI ANGGA SAPUTRA</h1>
         <p>Mahasiswa yang sedang belajar menjadi Fullstack Web Developer</p>
@@ -95,38 +114,71 @@ function App() {
         </p>
       </section>
 
-     {/* Portfolio Section */}
-<section id="portfolio" className="portfolio" data-aos="zoom-in-up">
-  <h2>Portofolio</h2>
-  <div className="projects">
+      {/* Skill Chart Section */}
+      <section id="skill-chart" className="skill-chart" data-aos="zoom-in">
+        <h2>Visualisasi Skill</h2>
+        <div className="chart-container">
+          <ResponsiveContainer width="100%" height={400}>
+            <BarChart data={skillData} margin={{ top: 20, right: 30, left: 0, bottom: 20 }}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#444" />
+              <XAxis dataKey="name" stroke="#fff" />
+              <YAxis stroke="#fff" />
+              <Tooltip
+                contentStyle={{ backgroundColor: "#111", border: "none", color: "#fff" }}
+                cursor={{ fill: "rgba(255,255,255,0.1)" }}
+              />
+              <Bar dataKey="level" fill="url(#gradient)" radius={[8, 8, 0, 0]} />
+              <defs>
+                <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#ffe600ff" />
+                  <stop offset="100%" stopColor="#fff200ff" />
+                </linearGradient>
+              </defs>
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+      </section>
 
-    {/* CRUD Project */}
-    <a
-      href="https://crudkaryawan.page.gd/"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="card"
-      data-aos="flip-left"
-    >
-      <img src={crudThumb} alt="CRUD Data Karyawan" className="project-img" />
-      <h3>CRUD Data Karyawan</h3>
-      <p>Aplikasi sederhana untuk tambah, edit, hapus data karyawan.</p>
-    </a>
+      {/* Portfolio Section */}
+      <section id="portfolio" className="portfolio" data-aos="zoom-in-up">
+        <h2>Portofolio</h2>
+        <div className="projects">
 
-    {/* Todo List Project */}
-    <a
-      href="https://catatanku.page.gd"
-      target="_blank"
-      rel="noopener noreferrer"
-      className="card"
-      data-aos="flip-right"
-    >
-      <img src={todoThumb} alt="Todo List App" className="project-img" />
-      <h3>Todo List App</h3>
-      <p>Aplikasi untuk mencatat dan menyelesaikan tugas harian.</p>
-    </a>
-  </div>
-</section>
+          {/* CRUD Project */}
+          <a
+            href="https://crudkaryawan.page.gd/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="card"
+            data-aos="flip-left"
+          >
+            <img src={crudThumb} alt="CRUD Data Karyawan" className="project-img" />
+            <h3>CRUD Data Karyawan</h3>
+            <p>Aplikasi sederhana untuk tambah, edit, hapus data karyawan.</p>
+          </a>
+
+          {/* Todo List Project */}
+          <a
+            href="https://catatanku.page.gd"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="card"
+            data-aos="flip-right"
+          >
+            <img src={todoThumb} alt="Todo List App" className="project-img" />
+            <h3>Todo List App</h3>
+            <p>Aplikasi untuk mencatat dan menyelesaikan tugas harian.</p>
+          </a>
+        </div>
+      </section>
+
+      {/* CV Section */}
+      <section id="cv" className="cv" data-aos="fade-up">
+        <h2>Download CV</h2>
+        <a href={cvPDF} download="CV-Ludfi.pdf" className="btn-download">
+          Download CV
+        </a>
+      </section>
 
       {/* Certificate Section */}
       <section id="certificate" className="certificate" data-aos="fade-up">
@@ -152,52 +204,52 @@ function App() {
 
       {/* Contact Section */}
       <section id="contact" className="contact" data-aos="fade-left">
-  <h2>Kontak</h2>
+        <h2>Kontak</h2>
 
-  <p>
-    <FaEnvelope style={{ marginRight: "8px" }} />
-    <a
-      href="mailto:ludfidwi787@gmail.com?subject=Halo%20Angga&body=Isi%20email%20di%20sini"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      ludfidwi787@gmail.com
-    </a>
-  </p>
+        <p>
+          <FaEnvelope style={{ marginRight: "8px" }} />
+          <a
+            href="mailto:ludfidwi787@gmail.com?subject=Halo%20Angga&body=Isi%20email%20di%20sini"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            ludfidwi787@gmail.com
+          </a>
+        </p>
 
-  <p>
-    <FaLinkedin style={{ marginRight: "8px" }} />
-    <a
-      href="https://www.linkedin.com/in/ludfi-dwi-septanto-rinaidi-angga-saputra"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      linkedin.com/in/ludfi-dwi-septanto-rinaidi-angga-saputra
-    </a>
-  </p>
+        <p>
+          <FaLinkedin style={{ marginRight: "8px" }} />
+          <a
+            href="https://www.linkedin.com/in/ludfi-dwi-septanto-rinaidi-angga-saputra"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            linkedin.com/in/ludfi-dwi-septanto-rinaidi-angga-saputra
+          </a>
+        </p>
 
-  <p>
-    <FaGithub style={{ marginRight: "8px" }} />
-    <a
-      href="https://github.com/AnggaSaputra78"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      github.com/AnggaSaputra78
-    </a>
-  </p>
+        <p>
+          <FaGithub style={{ marginRight: "8px" }} />
+          <a
+            href="https://github.com/AnggaSaputra78"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            github.com/AnggaSaputra78
+          </a>
+        </p>
 
-  <p>
-    <FaWhatsapp style={{ marginRight: "8px" }} />
-    <a
-      href="https://wa.me/6281450324748"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      081450324748
-    </a>
-  </p>
-</section>
+        <p>
+          <FaWhatsapp style={{ marginRight: "8px" }} />
+          <a
+            href="https://wa.me/6281450324748"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            081450324748
+          </a>
+        </p>
+      </section>
     </div>
   );
 }

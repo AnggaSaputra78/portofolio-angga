@@ -222,6 +222,90 @@ html, body {
   margin: 0 auto;
   color: #f2f2f2;
 }
+.skills {
+  padding: 60px 20px;
+  text-align: center;
+  background: #fff;
+}
+
+.skill-chart h2 {
+  margin-bottom: 30px;
+  font-size: 2rem;
+  text-align: center; /* 🔥 judul ke tengah */
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* default: rata tengah */
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.skill-card {
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #fff700, #ffee00);
+  color: #000;
+  font-weight: bold;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex: 1 1 150px; /* default min 150px */
+  text-align: center;
+  white-space: normal; /* biar text nggak hilang */
+  word-break: break-word; /* biar panjang pecah ke bawah */
+}
+
+/* 🔥 Responsif */
+@media (max-width: 768px) {
+  .skills-list {
+    justify-content: flex-start;
+  }
+
+  .skill-card {
+    flex: 1 1 calc(50% - 15px); /* 2 kolom */
+    min-width: 160px; /* ditambah biar text gak kepotong */
+    font-size: 0.9rem; /* kecilin font dikit */
+  }
+}
+
+@media (max-width: 480px) {
+  .skill-card {
+    flex: 1 1 100%; /* full width di HP kecil */
+    min-width: 100%;
+    font-size: 0.85rem; /* font lebih kecil */
+  }
+}
+
+
+.skill-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+.skills-note {
+  font-size: 1rem;
+  color: #555;
+  margin-top: 10px;
+}
+
+/* 🔥 Responsif */
+@media (max-width: 768px) {
+  .skills-list {
+    justify-content: flex-start; /* rata kiri di HP */
+  }
+
+  .skill-card {
+    flex: 1 1 calc(50% - 15px); /* 2 kolom di HP */
+    min-width: 140px;
+  }
+}
+
+@media (max-width: 480px) {
+  .skill-card {
+    flex: 1 1 100%; /* full width di layar kecil banget */
+  }
+}
 
 /* ===================== Portfolio Section ===================== */
 .portfolio {
@@ -486,6 +570,54 @@ html, body {
   
   .card {
     padding: 1.5rem;
+  }
+}
+.cv {
+  padding: 60px 20px;
+  text-align: center;
+  background: linear-gradient(135deg, #e60000, #000000, #b30000, #1a1a1a);
+  background-size: 400% 400%; /* biar animasi bisa bergerak */
+  animation: gradientMove 10s ease infinite; /* durasi & looping animasi */
+  color: #fff;
+}
+
+.cv h2 {
+  margin-bottom: 20px;
+  font-size: 2rem;
+  color: #fff; /* teks putih biar jelas */
+}
+
+.btn-download {
+  display: inline-block;
+  padding: 12px 25px;
+  background: linear-gradient(135deg, #000000, #000000);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  position: relative;
+  z-index: 1;
+}
+
+.btn-download:hover {
+  background: linear-gradient(135deg, #b30000, #1a1a1a);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.5);
+}
+
+/* 🔥 Keyframes Animasi Gradasi */
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
 /* ===================== API EFFECT ===================== */
